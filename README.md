@@ -1,31 +1,24 @@
 # no.-pyramid-eeltut6
+
 #include <stdio.h>
 
-void printPyramid(int currentRow, int totalRows, int currentNum) {
-    if (currentRow > totalRows)
-        return;
-
-    if (currentNum == 0) {
-        for (int i = 0; i < totalRows - currentRow; i++)
-            printf(" ");
-    }
-
-    if (currentNum < currentRow) {
-        printf("%d ", currentNum + 1);
-        printPyramid(currentRow, totalRows, currentNum + 1); 
-        return;
-    }
-
-    printf("\n"); 
-    printPyramid(currentRow + 1, totalRows, 0); 
-}
-
 int main() {
-    int n;
+    int input, row, space, number;
+
     printf("Enter the number of rows: ");
-    scanf("%d", &n);
+    scanf("%d", &input);
 
     printf("\nNumber Pyramid:\n");
-    printPyramid(1, n, 0); 
+
+    for (row = 1; row <= input; row++) {
+        for (space = 1; space <= input - row; space++) {
+            printf("  ");
+        }
+        for (number = 1; number <= row; number++) {
+            printf("%d ", number); 
+        }
+        printf("\n");
+    }
+
     return 0;
 }
