@@ -2,23 +2,27 @@
 
 #include <stdio.h>
 
+void printNum(int i, int n) {
+    if (i > n) return;
+    printf("%d ", i);
+    printNum(i + 1, n);
+}
+
+void Pyramid(int currentRow, int totalRows) {
+    if (currentRow > totalRows) return;
+
+    printNum(1, currentRow);
+    printf("\n");
+
+    Pyramid(currentRow + 1, totalRows);
+}
+
 int main() {
-    int input, row, space, number;
+    int n;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
 
-    printf("Enter the number of rows: ");
-    scanf("%d", &input);
-
-    printf("\nNumber Pyramid:\n");
-
-    for (row = 1; row <= input; row++) {
-        for (space = 1; space <= input - row; space++) {
-            printf("  ");
-        }
-        for (number = 1; number <= row; number++) {
-            printf("%d ", number); 
-        }
-        printf("\n");
-    }
+    Pyramid(1, n);
 
     return 0;
 }
